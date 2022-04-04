@@ -1,68 +1,18 @@
 <template>
-
-        <div class="postcard row">
-          <div v-if="background !='default'" class="postcard--background column column-left">
-            <img :src="background" />
-          </div>    
-          <div class="postcard-form-render column column-right">
-            <p class="recipient-name">
-              Sent to: {{ outputRecipient }}
-            </p>
-            <p class="message-output">
-                Your message is: {{ outputMsg }}
-            </p>
-            <p class="sender-name">
-              Sent by: {{ outputSender }}
-            </p>
-          </div>
-        </div>
-
-<button class="button" @click="generateReport">Print PDF</button>
-
-   <div>
-     <VueHtml2pdf
-        :show-layout="false"
-        :float-layout="true"
-        :enable-download="true"
-        :preview-modal="true"
-        :paginate-elements-by-height="1400"
-        filename="myPDF"
-        :pdf-quality="2"
-        :manual-pagination="false"
-        pdf-format="a4"
-        pdf-orientation="landscape"
-        pdf-content-width="800px"
-        ref="html2Pdf"
-    >
-      <pdf>
-        <template v-slot:pdf-content>
-          <!-- PDF Content Here -->
-
-          <!-- <div class="postcard row">
-            <div v-if="background !='default'" class="postcard--background column-left">
-              <img :src="background" />
-            </div>    
-            <div class="postcard-form-render column-right">
-              <p class="recipient-name">
-                Sent to: {{ outputRecipient }}
-              </p>
-              <p class="message-output">
-                  Your message is: {{ outputMsg }}
-              </p>
-              <p class="sender-name">
-                Sent by: {{ outputSender }}
-              </p>
-            </div>
-          </div> -->
-        </template>
-      </pdf>
-    </VueHtml2pdf>
-   </div>
+  <div class="postcard row">
+    <div v-if="background !='default'" class="postcard--background column-left">
+      <img :src="background" />
+    </div>
+    <div class="postcard-form-render column-right">
+      <p class="recipient-name">Sent to: {{ outputRecipient }}</p>
+      <p class="message-output">Your message is: {{ outputMsg }}</p>
+      <p class="sender-name">Sent by: {{ outputSender }}</p>
+    </div>
+  </div>
 </template>
 
 <!--Ideas for another day
 -add a blank "choose animal" default image
--make a grid view of animal backgrounds when selecting
 -filter search for animal backgrounds
 -make states persist (doesn't reset when you refresh page)
 -add email functionality
@@ -75,7 +25,6 @@
 -->
 
 <script>
-
 export default {
   name: 'PostCard',
   props: {
@@ -89,11 +38,6 @@ export default {
       isDefault: {type: Boolean}
     }
   },
-  methods: {
-    generateReport () { //gets an error when used, look into that
-            this.$refs.html2Pdf.generatePdf()
-    }
-  }
 }
 </script>
 
@@ -105,7 +49,6 @@ export default {
   border-style: solid;
   border-color: black;
   margin-top: 35px;
-  padding: 40px;
 }
 h3 {
   margin: 40px 0 0;
@@ -124,13 +67,15 @@ a {
 .postcard--background img {
   width: auto;
   height: 100%;
-  padding-right: 30px;
 }
-.row {
-  display: flex;
+.column {
+  float: left;
 }
-.column { /* text on right clips into pic on left */
-  flex: 50%
+.column-left {
+  width: 35%;
+}
+.column-right {
+  width: 65%;
 }
 </style>
 
