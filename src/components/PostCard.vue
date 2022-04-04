@@ -1,14 +1,16 @@
 <template>
   <div class="postcard row">
-    <div v-if="background !='default'" class="postcard--background column-left">
+    <div v-if="background !='default'" class="postcard--background column column-right">
       <img :src="background" />
     </div>
-    <div class="postcard-form-render column-right">
-      <p class="recipient-name">Sent to: {{ outputRecipient }}</p>
-      <p class="message-output">Your message is: {{ outputMsg }}</p>
-      <p class="sender-name">Sent by: {{ outputSender }}</p>
+    <div class="postcard-form-render column column-left">
+      <p class="recipient-name"><strong>Sent to: </strong>{{ outputRecipient }}</p>
+      <p class="message-output"><strong>Your message is: </strong>{{ outputMsg }}</p>
+      <p class="sender-name"><strong>Sent by: </strong>{{ outputSender }}</p>
     </div>
   </div>
+  <button class="button send-postcard">Send Postcard</button>
+  <button class="button reset-postcard" @click="resetPostcard()">Reset Postcard</button>
 </template>
 
 <!--Ideas for another day
@@ -38,17 +40,21 @@ export default {
       isDefault: {type: Boolean}
     }
   },
+  methods: {
+    resetPostcard: function() {   //Resets Postcard
+      return
+    }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .postcard {
-  display: grid;
-  border: 2px;
-  border-style: solid;
-  border-color: black;
+  display: flex;
+  border: 2px solid black;
   margin-top: 35px;
+  height: 400px;
 }
 h3 {
   margin: 40px 0 0;
@@ -66,16 +72,41 @@ a {
 }
 .postcard--background img {
   width: auto;
-  height: 100%;
+  height: 75%;
+}
+.row {
+  display: flex;
+  padding: 25px;
 }
 .column {
-  float: left;
+  flex: 50%;
 }
-.column-left {
-  width: 35%;
+.column-left{
+  padding-left: 25px;
+  flex: 50%;
 }
 .column-right {
-  width: 65%;
+  flex: 50%;
+  padding-right: 25px;
+  border-right: 1px solid black;
+
+}
+.button {
+  margin-top: 10px;
+  background-color: #39495c;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 160px;
+  height: 40px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+.reset-postcard {
+  margin-left: 2.5%;
+  background-color: lightcoral;
+  color: black;
 }
 </style>
 
