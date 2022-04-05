@@ -4,12 +4,7 @@
     :options="pdfOptions"
     :filename="exportFilename"
   >
-  <h1>This will print a PDF!</h1>
-    <!-- 
-        Need to figure out how to pass the child component as a prop
-        <component :is="child">
-      <slot />
-    </component> -->
+  <slot/>
 </vue3-simple-html2pdf>
   <button @click="generatePdf()">make me a pdf</button>
 </template>
@@ -21,6 +16,7 @@ import Vue3SimpleHtml2pdf from "vue3-simple-html2pdf/src/vue3-simple-html2pdf.vu
 export default {
     components: {
         Vue3SimpleHtml2pdf,
+        // PostCard
     },
   name: "PostCardPDF",
   //We can make the pdfOptions props that we then pass to data found in App.vue

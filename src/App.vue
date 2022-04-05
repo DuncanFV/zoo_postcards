@@ -6,16 +6,26 @@
     @input-sender="UpdateSender"
     @background-animal="UpdateBackground"
   />
-  <PostCard
+  <!-- <PostCard
     :outputRecipient="outputRecipient"
     :outputMsg="outputMsg"
     :outputSender="outputSender"
     :background="background"
-  />
+  /> -->
   <PostCardPDF 
     :ref="Vue3SimpleHtml2pdf"
     :options="pdfOptions"
-    :filename="exportFilename" />
+    :filename="exportFilename">
+    <h1>
+      rgfsfs
+    </h1>
+    <PostCard
+      :outputRecipient="outputRecipient"
+      :outputMsg="outputMsg"
+      :outputSender="outputSender"
+      :background="background"
+    />
+  </PostCardPDF>
 </template>
 
 <script>
