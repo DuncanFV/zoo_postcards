@@ -10,6 +10,7 @@
     </div>
   </div>
   <button class="button send-postcard">Send Postcard</button>
+  <button class="button edit-postcard" @click="scrollUp()">Edit Postcard</button>
   <button class="button reset-postcard" @click="resetPostcard()">Reset Postcard</button>
 </template>
 
@@ -43,6 +44,9 @@ export default {
   methods: {
     resetPostcard: function() {   //Resets Postcard
       return
+    },
+    scrollUp: function() {
+      window.scrollTo(0, 100);
     }
   }
 }
@@ -102,6 +106,9 @@ a {
   padding: 10px;
   text-align: center;
   cursor: pointer;
+}
+.edit-postcard {
+  margin-left: 2.5%;
 }
 .reset-postcard {
   margin-left: 2.5%;

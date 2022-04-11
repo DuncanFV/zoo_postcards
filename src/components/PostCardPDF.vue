@@ -6,7 +6,7 @@
   >
   <slot/>
 </vue3-simple-html2pdf>
-  <button @click="generatePdf()">make me a pdf</button>
+  <!-- <button @click="generatePdf()">make me a pdf</button> -->
 </template>
 
 <script>

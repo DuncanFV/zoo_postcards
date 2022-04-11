@@ -44,7 +44,7 @@
           <!-- Do we need to sort by {{image.title}}? Or just image.title? -->
       </select>
       <br>
-      <button class="button"> Create Postcard </button>
+      <button class="button" @click="scrollDown()"> Create Postcard </button>
     </div>
   </div>
 </template>
@@ -106,8 +106,11 @@ export default {
     //   return;
     // },
     increment() { //testing vuex states
-      this.$store.commit('increment')
-      console.log(this.$store.state.count)
+      this.$store.commit('increment');
+      console.log(this.$store.state.count);
+    },
+    scrollDown(){
+      window.scrollTo(0, 670);
     }
   },
 }

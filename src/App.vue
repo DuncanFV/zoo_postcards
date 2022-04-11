@@ -17,7 +17,7 @@
     :options="pdfOptions"
     :filename="exportFilename">
     <h1>
-      rgfsfs
+      <!-- put something here to be pdf'd -->
     </h1>
     <PostCard
       :outputRecipient="outputRecipient"
