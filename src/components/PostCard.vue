@@ -15,6 +15,7 @@
 </template>
 
 <!--Ideas for another day
+-get more details about the animal on the postcard
 -add a blank "choose animal" default image
 -filter search for animal backgrounds
 -make states persist (doesn't reset when you refresh page)

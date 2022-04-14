@@ -41,8 +41,28 @@
           :description="image.title"
           :value="image.image_large"
           > {{image.title}} </option>
-          <!-- Do we need to sort by {{image.title}}? Or just image.title? -->
       </select>
+
+      <!-- <label>Or search for an animal: </label>
+      <input 
+        class = "input animal-search"
+        type = "text"
+        placeholder = "--Search for an animal--"
+        v-model = "searchTerm"
+      />
+      <ul v-if="searchAnimals.length">
+        <li>
+          Showing {{ searchAnimals.length }} of {{ backgrounds.length }} results
+        </li>
+        <li
+          v-for="animal in searchAnimals"
+          :key="animal.title"
+          @click="selectAnimal(animal.title)"
+        >
+          {{ animal.title }}
+        </li>
+      </ul> -->
+
       <br>
       <button class="button" @click="scrollDown()"> Create Postcard </button>
     </div>
@@ -50,16 +70,61 @@
 </template>
 
 <script>
+// import {ref, computed} from 'vue'
+
 export default {
+  /*
+  setup() {
+    let searchTerm = ref('')
+
+    const searchAnimals = computed(() => {
+      if (searchTerm.value === '') {
+        return []
+      }
+
+    let matches = 0
+
+    //Problem is that the tutorial imported a json file to use,
+    //that's what "backgrounds" is supposed to be, so find a way to
+    //get backgrounds in here
+    return backgrounds.image.title.filter(animal => {
+      if (
+        animal.title.toLowerCase().includes(searchTerm.value.toLowerCase())
+        && matches < 10
+      ) {
+        matches++
+        return animal
+      }
+    })
+    });
+
+    const selectAnimal = (animal) => {
+      selectedAnimal.value = animal
+      searchTerm.value = ''
+    }
+
+    let selectedAnimal = ref('')
+
+    return {
+      // backgrounds,
+      searchTerm,
+      searchAnimals,
+      selectAnimal,
+      selectedAnimal
+    }
+    
+
+  },
+  */
   name: 'PostCardForm',
   data() {
     return{
       backgrounds: [],
-      selectedImage: "default",
+      selectedImage: "default"
     }
   },
   computed: { //Sort the list alphabetically
-    sortedArray() { //Doesn't work
+    /* sortedArray() { //Doesn't work
       let sortedNames = this.backgrounds;
       // sortedNames.sort(); //Of course this doesn't work, that's too easy
       
@@ -74,7 +139,7 @@ export default {
         return 0
       })
       return sortedNames;
-    }
+    } */
   },
   mounted() { //Where we get the data from the json file
     fetch('https://nationalzoo.si.edu/pyd/animals')
@@ -98,17 +163,13 @@ export default {
     updateImage: function(event) {  //tells app to change the image
       this.selectedImage = event.target.value;
       this.$emit("background-animal", this.selectedImage);
-      //console.log(event.target.value);
+      //if this.Genus and Species? That's what it is in the json file
       return this.selectedImage;
     },
-    // changeBackground: function() {  //tells app what the new image will be
-    //   this.$emit("background-animal", this.selectedImage);
-    //   return;
+    // increment() { //testing vuex states
+    //   this.$store.commit('increment');
+    //   console.log(this.$store.state.count);
     // },
-    increment() { //testing vuex states
-      this.$store.commit('increment');
-      console.log(this.$store.state.count);
-    },
     scrollDown(){
       window.scrollTo(0, 670);
     }
@@ -149,8 +210,13 @@ export default {
   top: 10px;
 }
 
+.animal-search {
+  padding-top: 10px;
+}
+
 .select-label {
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     position: relative;
     top: 10px;
 }
