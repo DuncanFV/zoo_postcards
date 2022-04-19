@@ -1,0 +1,5 @@
+export const backgrounds = fetch('https://nationalzoo.si.edu/pyd/animals')
+  .then(res => res.json())
+  .then(data => this.images = data)
+//   .then(this.images.sort((a, b) => b.title.localeCompare(a.title)))
+  .catch(err => console.log(err.message))

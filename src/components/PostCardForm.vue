@@ -43,7 +43,7 @@
           > {{image.title}} </option>
       </select>
 
-      <!-- <label>Or search for an animal: </label>
+      <label>Or search for an animal: </label>
       <input 
         class = "input animal-search"
         type = "text"
@@ -61,7 +61,7 @@
         >
           {{ animal.title }}
         </li>
-      </ul> -->
+      </ul>
 
       <br>
       <button class="button" @click="scrollDown()"> Create Postcard </button>
@@ -70,10 +70,11 @@
 </template>
 
 <script>
-// import {ref, computed} from 'vue'
+import {backgrounds} from './backgrounds'
+import {ref, computed} from 'vue'
 
 export default {
-  /*
+
   setup() {
     let searchTerm = ref('')
 
@@ -87,7 +88,9 @@ export default {
     //Problem is that the tutorial imported a json file to use,
     //that's what "backgrounds" is supposed to be, so find a way to
     //get backgrounds in here
-    return backgrounds.image.title.filter(animal => {
+
+    // Put backgrounds and mounted in separate component/file, then import?
+    return backgrounds.value.filter(animal => {
       if (
         animal.title.toLowerCase().includes(searchTerm.value.toLowerCase())
         && matches < 10
@@ -112,14 +115,12 @@ export default {
       selectAnimal,
       selectedAnimal
     }
-    
-
   },
-  */
+
   name: 'PostCardForm',
   data() {
     return{
-      backgrounds: [],
+      backgrounds: this.selectedImage,
       selectedImage: "default"
     }
   },
@@ -141,13 +142,15 @@ export default {
       return sortedNames;
     } */
   },
+
   mounted() { //Where we get the data from the json file
-    fetch('https://nationalzoo.si.edu/pyd/animals')
-      .then(res => res.json())
-      .then(data => this.backgrounds = data)
-      .then(this.backgrounds.sort((a, b) => b.title.localeCompare(a.title)))
-      .catch(err => console.log(err.message))
+    // fetch('https://nationalzoo.si.edu/pyd/animals')
+    //   .then(res => res.json())
+    //   .then(data => this.backgrounds = data)
+    //   .then(this.backgrounds.sort((a, b) => b.title.localeCompare(a.title)))
+    //   .catch(err => console.log(err.message))
   },
+  
   methods: {
     //form-inputs is what it is being emitted as (how PostCard will receive it), formInputs is the actual data being passed
 
