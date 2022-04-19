@@ -76,6 +76,7 @@ import {ref, computed} from 'vue'
 export default {
 
   setup() {
+    let backgrounds = []
     let searchTerm = ref('')
 
     const searchAnimals = computed(() => {
@@ -120,7 +121,7 @@ export default {
   name: 'PostCardForm',
   data() {
     return{
-      backgrounds: this.selectedImage,
+      backgrounds: backgrounds,
       selectedImage: "default"
     }
   },

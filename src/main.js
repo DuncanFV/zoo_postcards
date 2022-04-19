@@ -25,4 +25,4 @@ const app = createApp('#app')
 app.use(store)
 
 store.commit('increment')
-console.log(store.state.count)
+// console.log(store.state.count)
